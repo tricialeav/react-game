@@ -1,21 +1,42 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import PhotoCard from "./components/PhotoCard";
+import Wrapper from "./components/Wrapper";
+import Title from "./components/Title";
+import photos from "./photos.json";
+import "./App.css";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+  state = {
+    photos
+  };
 
-export default App;
+  // getCards = id => {
+  //   const photos = this.state.photos.filter(photos => photos.id !== id);
+  //   this.setState({ photos });
+  // };
+
+  handleClick(e) {
+      e.preventDefault();
+      console.log('The link was clicked.');
+      // const rand = Math.floor(Math.random * this.state.photos.length);
+      // this.setState({ photos: this.state.random + rand });
+    }
+
+    render() {
+      return (
+        <Wrapper>
+          <Title>Click Game</Title>
+          {this.state.photos.map(photos => (
+            <PhotoCard 
+              onClick={this.handleClick}
+              id={photos.id}
+              key={photos.id}
+              image={photos.image}
+            />
+          ))}
+        </Wrapper>
+      );
+    }
+  }
+
+  export default App;
