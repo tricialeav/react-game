@@ -10,17 +10,13 @@ class App extends Component {
     photos
   };
 
-  // getCards = id => {
-  //   const photos = this.state.photos.filter(photos => photos.id !== id);
-  //   this.setState({ photos });
-  // };
-
   handleClick(e) {
       e.preventDefault();
       console.log('The link was clicked.');
-      // const rand = Math.floor(Math.random * this.state.photos.length);
-      // this.setState({ photos: this.state.random + rand });
+      // TODO create code to switch all photos on click
     }
+
+    // TODO make scoreboard and link to click events
 
     render() {
       return (
