@@ -7,16 +7,25 @@ import "./App.css";
 
 class App extends Component {
   state = {
-    photos
+    photos,
+    clicked: []
   };
 
   handleClick(e) {
       e.preventDefault();
+      console.log('clicked on: '+e.target.id);
       console.log('The link was clicked.');
-      // TODO create code to switch all photos on click
+      let clicked = this.state.clicked;
+
+      if(clicked.indexOf(e.target.id) > -1) {
+        console.log("Already clicked: "+e.target.id);
+      } else {
+        clicked.push(e.target.id);
+        this.setState({ clicked: clicked });
+      }
     }
 
-    // TODO make scoreboard and link to click events
+    // TODO switch photos when clicked, add/remove points
 
     render() {
       return (
@@ -24,7 +33,7 @@ class App extends Component {
           <Title>Click Game</Title>
           {this.state.photos.map(photos => (
             <PhotoCard 
-              onClick={this.handleClick}
+              onClick={this.handleClick.bind(this)}
               id={photos.id}
               key={photos.id}
               image={photos.image}

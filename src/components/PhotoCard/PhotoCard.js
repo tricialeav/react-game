@@ -4,7 +4,7 @@ import "./PhotoCard.css";
 const PhotoCard = props => (
   <div className="card">
     <div className="img-container">
-      <img alt={props.name} src={props.image} onClick={props.onClick}/>
+      <img id={props.id} alt={props.name} src={props.image} onClick={props.onClick}/>
     </div>
   </div>
 );
